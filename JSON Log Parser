@@ -1,0 +1,35 @@
+import json
+import os
+
+LOG_DIR = "/home/<your-username>/cowrie/var/log/cowrie"  # Update as needed
+
+def main():
+    # For simplicity, let’s read just one log file named 'cowrie.json'
+    log_file_path = os.path.join(LOG_DIR, "cowrie.json")
+    
+    # If you have multiple files (cowrie.json.*), you can adapt to loop over them
+    if not os.path.exists(log_file_path):
+        print(f"No log file found at {log_file_path}")
+        return
+
+    with open(log_file_path, "r") as log_file:
+        for line in log_file:
+            # Each line is a separate JSON object
+            data = json.loads(line.strip())
+            
+            # Extract some fields (if present)
+            timestamp = data.get("timestamp")
+            src_ip    = data.get("src_ip")
+            username  = data.get("username")
+            password  = data.get("password")
+            eventid   = data.get("eventid")
+
+            # Filter for interesting events
+            if eventid == "cowrie.login.failed":
+                print(f"[{timestamp}] Login FAILED from {src_ip} using {username}/{password}")
+            elif eventid == "cowrie.login.success":
+                print(f"[{timestamp}] Login SUCCESS from {src_ip} using {username}/{password}")
+            # You can add more logic here for other event IDs
+
+if __name__ == "__main__":
+    main()
