@@ -1,0 +1,7 @@
+import pandas as pd
+
+df = pd.read_csv("cowrie_events.csv")
+
+# Top 5 source IP addresses by attempt count
+print("Top attacking IPs:")
+print(df["src_ip"].value_counts().head(5))
