@@ -7,3 +7,5 @@ This project sets up an SSH honeypot using Cowrie, captures login attempts, and 
 2. Project Overview
 3. Environment Setup
 4. Installing and Configuring Cowrie
+
+P: [Pre] (#Prerequisites)
