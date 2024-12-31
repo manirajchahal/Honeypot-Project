@@ -40,5 +40,30 @@ This project sets up an SSH honeypot using Cowrie, captures login attempts, and 
    5. Use the following command to update your VM: \
    `sudo apt-get update && sudo apt-get upgrade -y`
 
+## **Installing and Configuring Cowrie**
+
+1. Installing Dependencies: \
+   `sudo apt-get update` \
+   `sudo apt-get install -y python3-virtualenv python3-dev libssl-dev libffi-dev build-essential git`
+2. Clone the Cowrie Repository: \
+   `cd ~` \
+   `git clone https://github.com/cowrie/cowrie.git` \
+   `cd cowrie`
+3. Set Up a Python Virtual Environment: \
+   `python3 -m venv cowrie-env` \
+   `source cowrie-env/bin/activate` \
+   `pip install --upgrade pip`
+4. Install Cowrie Requirements: \
+   `pip install -r requirements.txt`
+5. Create Local Copy of Cowrie Config: \
+   `cp etc/cowrie.cfg.dist etc/cowrie.cfg`
+6. Start/Stop Cowrie:
+   1. Start Cowrie:
+      `bin/cowrie start`
+   2. Check Cowrie Status:
+      `bin/cowrie status`
+   3. Stop Cowrie:
+      `bin/cowrie stop`
+
 
 
