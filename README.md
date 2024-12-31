@@ -14,9 +14,9 @@ This project sets up an SSH honeypot using Cowrie, captures login attempts, and 
 9. License
 
 ## **Prerequisites**
--Host Machine with hypervisor such as VirtualBox or VMWare.
--Ubuntu 22.04 to install on mentioned Virtual Machine.
--Internet Connectivity
+-Host Machine with hypervisor such as VirtualBox or VMWare. \
+-Ubuntu 22.04 to install on mentioned Virtual Machine. \
+-Internet Connectivity.
 
 ## **Project Overview**
 1. Set up Ubuntu on a dedicated VM to isolate the honeypot.
@@ -28,6 +28,17 @@ This project sets up an SSH honeypot using Cowrie, captures login attempts, and 
 
 ## **Environment Setup**
 1. ### Create a Ubuntu VM
+     1. Download Ubuntu 22.04 ISO from [Ubuntu's](https://ubuntu.com/download/desktop) website.
+     2. Create a new VM (ex. VirtualBox): \
+        -Name: HoneypotVM \
+        -Type: Linux \
+        -Version: Ubuntu (64-bit) \
+        -RAM: 2GB (minimum) \
+        -HDD: 20GB (minimum)
+   3. Attach the ISO to the VM and install Ubuntu.
+   4. Choose either bridged or NAT networking type under Network. (Bridged for easier connection to other VM's and have a local IP, NAT for security).
+   5. Use the following command to update your VM: \
+      
 
 
 
