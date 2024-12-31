@@ -38,7 +38,7 @@ This project sets up an SSH honeypot using Cowrie, captures login attempts, and 
    3. Attach the ISO to the VM and install Ubuntu.
    4. Choose either bridged or NAT networking type under Network. (Bridged for easier connection to other VM's and have a local IP, NAT for security).
    5. Use the following command to update your VM: \
-      
+   `sudo apt-get update && sudo apt-get upgrade -y`
 
 
 
