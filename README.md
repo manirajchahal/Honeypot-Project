@@ -145,7 +145,7 @@ We can parse these logs to see who is trying to log in and which credentials the
 - **Liability:** You are responsible for how you deploy and maintain your honeypot. Exposing a honeypot to the internet can attract malicious traffic. Ensure you understand the risks and properly segment from production or personal data.
 
 ## License
-Feel free to use and modify this project under the ters of the MIT license.
+Feel free to use and modify this project under the terms of the MIT license.
 
    
    
