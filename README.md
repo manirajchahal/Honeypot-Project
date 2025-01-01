@@ -65,5 +65,87 @@ This project sets up an SSH honeypot using Cowrie, captures login attempts, and 
    3. Stop Cowrie:
       `bin/cowrie stop`
 
+## **Port Forwarding**
+
+Attackers typically look to attack port 22, the SSH port. In order for Cowrie to listen, the information from port 22 has to be forwarded to prot 2222, which is Cowrie's port.
+
+Using iptables on the VM. \
+`sudo iptables -t nat -A PREROUTING -p tcp --dport 22 j REDIRECT --to-port 2222` 
+
+In order to keep this rule persistent, even after reboots, use the following code: \
+`sudo apot-get install -y iptables-persistent` 
+
+When prompted, ask to save current IPv4 (and/or IPv6) rules. 
+
+Now, any traffic to port 22 will go to port 2222, where Cowrie listens.
+
+## Verifying and Testing the Honeypot
+
+1. Verify Cowrie is started.
+
+   To Start Cowrie: \
+   `cd ~/cowrie` \
+   `source cowrie-env/bin/activate` \
+   `bin/cowrie start` 
+
+2. Test SSH from host: \
+   `ssh root@<honeypot-VM-IP>`
+
+   - You might see "Permission Denied" if Cowrie is configured to reject login attempts.
+   - Check Cowrie's log directory to confirm it's logging:
+  
+     `tail -f~/cowrie/var/log/cowrie/cowrie.log`
+
+3. Look for JSON logs in: \
+   `~/cowrie/var/log/cowrie/cowrie.json`
+
+   You should see "cowrie.login.failed" events whenever a SSH attempt is made to port 22.
+
+## Log Analysis
+
+We can parse these logs to see who is trying to log in and which credentials they use.
+
+1. Parsing with a Simple Python Script
+   Create a script called parse_cowrie_logs.py (in ~/cowrie-analysis or a folder of your choice):
+
+   **Reference Log Parser Folder/JSON Log Parser**
+   You should see your **failed login attempts** in the console.
+
+2. Export to CSV:
+
+   If you want a CSV file:
+
+   **Reference Log Parser Folder/Updated JSON Log Parser**
+
+   You can run the script by entering: \
+
+   `python3 parse_cowrie_logs.py`
+
+   A file named cowrie_events.csv is generated with your honeypot logs.
+
+3. Analyzing with Pandas:
+   1. Install Pandas:
+      `pip install pandas`
+   2. Create analysis.py:
+  
+      **Reference Analyze CSV Folder/Pandas**
+
+   3. Run:
+      `python3 analysis.py`
+
+      You'll get a list of your most frequent attackers.
+
+ 4. Visualizing Attacks:
+
+      To generate a simple bar chart:
+
+      **Reference Analyze CSV Folder/Pandas + Updated Matplotlib**
+
+## Ethical Disclaimer
+- **Intended Use:** This honeypot project is for **educational** and **research** purposes only.
+
+   
+   
+
 
 
