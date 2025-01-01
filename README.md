@@ -92,8 +92,7 @@ Now, any traffic to port 22 will go to port 2222, where Cowrie listens.
    `ssh root@<honeypot-VM-IP>`
 
    - You might see "Permission Denied" if Cowrie is configured to reject login attempts.
-   - Check Cowrie's log directory to confirm it's logging:
-  
+   - Check Cowrie's log directory to confirm it's logging:\
      `tail -f~/cowrie/var/log/cowrie/cowrie.log`
 
 3. Look for JSON logs in: \
@@ -108,17 +107,17 @@ We can parse these logs to see who is trying to log in and which credentials the
 1. Parsing with a Simple Python Script
    Create a script called parse_cowrie_logs.py (in ~/cowrie-analysis or a folder of your choice):
 
-   **Reference Log Parser Folder/JSON Log Parser**
+   - **Reference Log Parser Folder/JSON Log Parser** 
+     
    You should see your **failed login attempts** in the console.
 
 2. Export to CSV:
 
    If you want a CSV file:
 
-   **Reference Log Parser Folder/Updated JSON Log Parser**
+   - **Reference Log Parser Folder/Updated JSON Log Parser**
 
-   You can run the script by entering: \
-
+   You can run the script by entering: 
    `python3 parse_cowrie_logs.py`
 
    A file named cowrie_events.csv is generated with your honeypot logs.
@@ -128,7 +127,7 @@ We can parse these logs to see who is trying to log in and which credentials the
       `pip install pandas`
    2. Create analysis.py:
   
-      **Reference Analyze CSV Folder/Pandas**
+     - **Reference Analyze CSV Folder/Pandas**
 
    3. Run:
       `python3 analysis.py`
@@ -138,8 +137,7 @@ We can parse these logs to see who is trying to log in and which credentials the
  4. Visualizing Attacks:
 
       To generate a simple bar chart:
-
-      **Reference Analyze CSV Folder/Pandas + Updated Matplotlib**
+     - **Reference Analyze CSV Folder/Pandas + Updated Matplotlib**
 
 ## Ethical Disclaimer
 - **Intended Use:** This honeypot project is for **educational** and **research** purposes only.
