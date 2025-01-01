@@ -143,6 +143,11 @@ We can parse these logs to see who is trying to log in and which credentials the
 
 ## Ethical Disclaimer
 - **Intended Use:** This honeypot project is for **educational** and **research** purposes only.
+- **Network Isolation:** You should run this honeypot in a **controlled environment** or a dedicated VM.
+- **Liability:** You are responsible for how you deploy and maintain your honeypot. Exposing a honeypot to the internet can attract malicious traffic. Ensure you understand the risks and properly segment from production or personal data.
+
+## License
+Feel free to use and modify this project under the ters of the MIT license.
 
    
    
