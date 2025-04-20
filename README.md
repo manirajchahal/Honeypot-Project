@@ -85,7 +85,7 @@ sudo iptables -t nat -A PREROUTING -p tcp --dport 22 j REDIRECT --to-port 2222
 ```
 In order to keep this rule persistent, even after reboots, use the following code:
 ```bash
-sudo apot-get install -y iptables-persistent
+sudo apt-get install -y iptables-persistent
 ```
 When prompted, ask to save current IPv4 (and/or IPv6) rules. 
 
